@@ -71,3 +71,55 @@ Listo para cargarse en el Mes 6 con una línea de código.
 Con pocos datos XGBoost necesita `scale_pos_weight` para romper el empate entre
 clases balanceadas. Con 50+ empresas del Registro Mercantil en el Mes 6, el modelo
 usará todas las variables y las importancias serán más ricas.
+
+## Scoring Automático v4.0 — Semana 3 completada
+
+### Qué hace esta semana
+Feature engineering — construcción de 7 ratios financieros avanzados y 4 variables
+de interacción, selección automática de las más informativas y modelo final entrenado
+y comparado con la Semana 2.
+
+### Bloque 11 — Ratios financieros avanzados
+7 nuevas variables derivadas de los datos del Mes 2:
+
+| Variable | Qué mide |
+|---|---|
+| coste_por_empleado | Eficiencia de costes por persona |
+| activo_por_empleado | Intensidad de activos por persona |
+| deuda_por_empleado | Carga de deuda por persona |
+| roa_estimado | Return on Assets — rentabilidad sobre activos |
+| roe_estimado | Return on Equity — rentabilidad sobre capital propio |
+| deuda_ebitda | Años necesarios para pagar la deuda |
+| años_pago_deuda | Mismo ratio — perspectiva temporal |
+
+### Bloque 12 — Variables de interacción
+4 variables que combinan ratios existentes:
+
+| Variable | Qué captura |
+|---|---|
+| margen_x_crecimiento | Empresas rentables Y en crecimiento simultáneamente |
+| solvencia_compuesta | Margen alto + deuda baja en un solo indicador |
+| eficiencia_relativa | Facturación/empleado vs media del sector |
+| tamano_solvencia | Empresas grandes con balance limpio |
+
+### Bloque 13 — Selección de features
+SelectKBest con F-score selecciona las features con mayor poder discriminante
+entre TOP y MID/LOW. Top features seleccionadas → ver output del notebook.
+
+### Bloque 14 — Modelo final
+GridSearchCV sobre el dataset enriquecido. Comparativa directa con la Semana 2
+usando el mismo dataset y los mismos folds.
+
+### Archivos
+- **scoring_automatico_v04.ipynb** — notebook completo de la semana
+- **modelo_scoring_v4_final.joblib** — modelo XGBoost con features enriquecidas
+- **scaler_scoring_v4_final.joblib** — scaler para las nuevas features
+- **features_scoring_v4_final.joblib** — lista de top features seleccionadas
+
+### Lección clave
+Con 8 empresas el feature engineering no mejora dramáticamente el F1 — el dataset
+es demasiado pequeño para que las nuevas variables alcancen significancia estadística.
+Con 50+ empresas del Registro Mercantil en el Mes 6, el ROA, ROE y solvencia
+compuesta serán variables altamente informativas.
+
+
