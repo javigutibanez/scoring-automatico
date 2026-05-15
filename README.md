@@ -122,4 +122,53 @@ es demasiado pequeño para que las nuevas variables alcancen significancia estad
 Con 50+ empresas del Registro Mercantil en el Mes 6, el ROA, ROE y solvencia
 compuesta serán variables altamente informativas.
 
+## Scoring Automático v5.0 — Semana 4 completada · Mes 5 cerrado
+
+### Qué hace esta semana
+Semana de integración y cierre del Mes 5. Pipeline completo de scikit-learn,
+scoring automático integrado sobre las 9 PYMEs, dashboard final y Excel ejecutivo.
+
+### Bloque 15 — Pipeline completo
+Pipeline scikit-learn que encadena escalado + XGBoost en un solo objeto.
+Predicción en una línea — sin necesidad de escalar manualmente antes de predecir.
+
+Demo con empresa nueva (margen 68%, deuda 0.15, crecimiento 5.3%):
+**Probabilidad de ser TOP: 72.4% → Clasificación: TOP**
+
+### Bloque 16 — Scoring integrado en el Analizador v0.5
+Pipeline aplicado sobre las 9 empresas del dataset original.
+
+| Empresa | Prob TOP | Clasificación | Score manual |
+|---|---|---|---|
+| Gestoría Pérez | 0.724 | TOP ✓ | 0.868 |
+| Academia Idiomas Sol | 0.724 | TOP ✓ | 0.808 |
+| Clínica Dental Martínez | 0.724 | TOP ✓ | 0.652 |
+| Resto (6 empresas) | 0.276 | MID/LOW | — |
+
+**Correlación ML vs scoring manual: 0.76** — alta coincidencia entre ambos modelos.
+
+### Bloque 17 — Dashboard final y Excel
+Dashboard de 4 paneles: ranking ML, ML vs manual, importancia de variables
+y tabla resumen del Mes 5.
+
+Excel con 4 hojas: Ranking ML, Importancia variables, ML vs Manual,
+Resumen ejecutivo.
+
+### Archivos
+- **scoring_automatico_v05.ipynb** — notebook completo del Mes 5
+- **pipeline_scoring_v5.joblib** — pipeline listo para producción en el Mes 6
+- **analizador_v5_scoring_ml.png** — ranking de las 9 empresas por probabilidad
+- **dashboard_mes5_final.png** — dashboard completo del Mes 5
+- **scoring_automatico_v5_final.xlsx** — Excel con 4 hojas
+
+### Resumen del Mes 5
+| Métrica | Resultado |
+|---|---|
+| Features creadas | 13 (6 originales + 7 nuevas) |
+| Features seleccionadas | 6 por F-score |
+| F1 cross-validation | 0.333 |
+| Correlación ML vs manual | 0.76 |
+| Empresas TOP identificadas | 3 (consistentes con scoring manual) |
+| Pipeline exportado | pipeline_scoring_v5.joblib |
+
 
